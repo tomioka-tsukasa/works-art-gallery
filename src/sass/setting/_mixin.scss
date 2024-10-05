@@ -1,0 +1,19 @@
+@use "./variable" as *;
+
+@mixin container($breakPoint) {
+  @container (max-width: $breakPoint) {
+    @content;
+  }
+}
+
+@mixin pc() {
+  @media screen and (min-width: $breakPoint + 1px) {
+    @content;
+  }
+}
+
+@mixin sp() {
+  @media screen and (max-width: $breakPoint) {
+    @content;
+  }
+}

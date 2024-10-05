@@ -1,0 +1,57 @@
+@use "sass:map";
+@use "@setting" as *;
+
+a,
+button {
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+
+  &:hover {
+    @include pc {
+      opacity: 0.7;
+    }
+  }
+}
+
+body {
+  &:after {
+    content: "";
+    display: block;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: all 0.58s ease 0s;
+    opacity: 0;
+    backdrop-filter: blur(9px) brightness(28%);
+    pointer-events: none;
+  }
+
+  &.UF_isNavigating {
+    pointer-events: none;
+
+    &:after {
+      opacity: 1;
+    }
+
+    [data-style="navigatingType"] {
+      opacity: 1;
+    }
+  }
+
+  &#home {
+    header {
+      transition: opacity 1.2s ease 0s;
+      transition-delay: 2s;
+      opacity: 0;
+    }
+
+    &.UF_homeAnimationInit {
+      header {
+        opacity: 1;
+      }
+    }
+  }
+}

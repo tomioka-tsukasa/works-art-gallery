@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "stylelint-config-property-sort-order-smacss"
+  ],
+  "rules": {
+    "color-hex-length": "long",
+    "comment-no-empty": true,
+    "declaration-block-no-duplicate-properties": true,
+    "function-calc-no-unspaced-operator": true,
+    "function-url-quotes": "always",
+    "font-family-name-quotes": "always-unless-keyword",
+    "length-zero-no-unit": true
+  },
+  "ignoreFiles": [
+    "**/*.md",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/_reset.scss",
+    "**/_reset.css",
+    "./next.config.mjs"
+  ]
+}

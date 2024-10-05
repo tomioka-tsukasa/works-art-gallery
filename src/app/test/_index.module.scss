@@ -1,0 +1,6 @@
+@use "sass:map";
+@use "@setting" as *;
+
+.root {
+  background-color: map.get($baseColor, "index");
+}
