@@ -1,0 +1,42 @@
+@use "sass:map";
+@use "@setting" as *;
+
+.root {
+  display: inline-block;
+}
+
+.inner {
+  display: inline-flex;
+  align-items: center;
+}
+
+.arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80px;
+  transform: translate(calc((40 / 97) * 100%), calc((16 / 56) * 100%));
+
+  span {
+    display: inline-block;
+    height: 2px;
+    background-color: #d9d9d9;
+
+    &:nth-child(1) {
+      width: 21px;
+      transform: translate(2px, -4px) rotate(38.76deg);
+    }
+
+    &:nth-child(2) {
+      width: 100%;
+    }
+  }
+}
+
+.circle {
+  width: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  aspect-ratio: 1 / 1;
+}

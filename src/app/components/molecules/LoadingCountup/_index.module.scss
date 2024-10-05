@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "@setting" as *;
+
+.root {
+  overflow: hidden;
+  font-size: 96px;
+  line-height: 1;
+
+  * {
+    display: inline-block;
+  }
+}
+
+.wrap {
+  position: relative;
+}
+
+.original {
+}
+
+.after {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+}

@@ -1,0 +1,50 @@
+@use "sass:map";
+@use "@setting" as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+}
+
+.image {
+  display: inline-flex;
+  position: relative;
+  box-shadow: none;
+
+  img {
+    flex-shrink: 0;
+    height: auto;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    transition: all 0.9s ease 0s;
+    background-color: #000000;
+  }
+
+  &.isView {
+    box-shadow: 6px 6px 12px 3px rgba(#ffffff, 0.2);
+
+    &:after {
+      height: 0%;
+    }
+  }
+}
+
+.plate {
+  position: relative;
+  transition: all 0.9s ease 0s;
+  transition-delay: 0.3s;
+  opacity: 0;
+
+  &.isView {
+    opacity: 1;
+  }
+}
