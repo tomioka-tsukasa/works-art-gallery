@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/store/hook"
 import { useVisited } from "./customHooks/useVisited"
 import { useEffect } from "react"
 import { update } from "@/lib/store/slice/loadingCtrl"
+import { usePathname } from "next/navigation"
 
 type Props = {
   active?: boolean
@@ -15,8 +16,14 @@ export default function Loading({
   active = true
 }: Props ) {
   const isComplete = useAppSelector(selector => selector.loadingCtrl.complete)
+  const pathname = usePathname()
   const dispatch = useAppDispatch()
   useVisited()
+  useEffect(() => {
+    isComplete && dispatch(update({
+      complete: false
+    }))
+  }, [pathname])
   useEffect(() => {
     setTimeout(() => {
       dispatch(update({
