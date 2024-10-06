@@ -23,25 +23,34 @@
   }
 }
 
-.gallery {
-  padding: 20px 0 0 0;
-}
-
-.nav {
+.header {
   position: fixed;
   z-index: 999;
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: calc(100vh * (390 / 844));
-  padding: 0 16px 24px;
 
-  @include pc {
-    left: 50%;
-    width: calc(100vh * (390 / 844));
-    transform: translate(-50%, 0);
-  }
+  @include spWidth();
 
   @include sp {
     width: 100%;
   }
+}
+
+.loading {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  pointer-events: none;
+
+  @include spWidth();
+
+  @include sp {
+    width: 100%;
+  }
+}
+
+.gallery {
+  padding: 20px 0 0 0;
 }

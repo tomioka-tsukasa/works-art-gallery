@@ -17,3 +17,11 @@
     @content;
   }
 }
+
+@mixin spWidth() {
+  @include pc {
+    left: 50%;
+    width: calc(100vh * (390 / 844));
+    transform: translate(-50%, 0);
+  }
+}
