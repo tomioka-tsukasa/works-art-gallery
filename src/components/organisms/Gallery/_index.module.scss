@@ -25,6 +25,7 @@
 }
 
 .artModel {
+  display: inline-block;
   width: calc((264 / 390) * (100vh * (390 / 844)));
 
   &:nth-child(6n + 1) {
