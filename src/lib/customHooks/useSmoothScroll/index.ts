@@ -41,7 +41,7 @@ const useSmoothScroll: UseSmoothScroll = (props = {
       status.onTouch.active = true
       smoothScrollAuto(
         container,
-        direction === 'next' ? 10 : -10,
+        direction === 'next' ? 7.5 : -7.5,
         status.onTouch
       )
     }
@@ -55,7 +55,7 @@ const useSmoothScroll: UseSmoothScroll = (props = {
       status.onEaseOut.active = true
       smoothScroll(
         container,
-        direction === 'next' ? 100 : -100,
+        direction === 'next' ? 75 : -75,
         1000,
         easeOutQuart,
         status.onEaseOut,
