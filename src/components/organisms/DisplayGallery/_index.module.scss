@@ -1,14 +1,6 @@
 @use "sass:map";
 @use "@setting" as *;
 
-.gallery {
-  pointer-events: none;
-
-  &.isActive {
-    pointer-events: visible;
-  }
-}
-
 .nav {
   position: fixed;
   z-index: 9;

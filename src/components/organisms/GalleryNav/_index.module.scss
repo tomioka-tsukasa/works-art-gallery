@@ -5,6 +5,9 @@
   transition: all 1.2s ease-in 0s;
   opacity: 0.2;
   pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: none;
 
   &.isActive {
     opacity: 1;
