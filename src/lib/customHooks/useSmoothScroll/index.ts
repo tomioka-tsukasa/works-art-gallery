@@ -51,10 +51,10 @@ const useSmoothScroll = () => {
         status.onTouch.active = false
         status.onEaseOut.active = true
         status.auto.active = true
-        startAutoScroll(
-          container,
-          status
-        )
+        // startAutoScroll(
+        //   container,
+        //   status
+        // )
       }
     }
     touchCtrl(
@@ -69,22 +69,22 @@ const useSmoothScroll = () => {
       onTouchStart,
       onTouchEnd
     )
-    container.scrollLeft = container.scrollWidth - container.clientWidth
-    smoothScroll(
-      container,
-      -(container.scrollWidth - container.clientWidth),
-      3000,
-      easeInOutQuart,
-      {
-        active: true
-      },
-      () => {
-        startAutoScroll(
-          container,
-          status
-        )
-      }
-    )
+    // container.scrollLeft = container.scrollWidth - container.clientWidth
+    // smoothScroll(
+    //   container,
+    //   -(container.scrollWidth - container.clientWidth),
+    //   3000,
+    //   easeInOutQuart,
+    //   {
+    //     active: true
+    //   },
+    //   () => {
+    //     startAutoScroll(
+    //       container,
+    //       status
+    //     )
+    //   }
+    // )
   }, [])
 }
 
