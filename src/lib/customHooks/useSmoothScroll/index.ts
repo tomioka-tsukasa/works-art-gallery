@@ -74,6 +74,10 @@ const useSmoothScroll: UseSmoothScroll = (props = {
         onTouchStart,
         onTouchEnd
       )
+      status.inited && props.autoScroll && startAutoScroll(
+        container,
+        status.auto
+      )
     },
     init() {
       container.scrollLeft = container.scrollWidth - container.clientWidth
@@ -86,10 +90,6 @@ const useSmoothScroll: UseSmoothScroll = (props = {
           active: true
         },
         () => {
-          props.autoScroll && startAutoScroll(
-            container,
-            status.auto
-          )
           props?.inited && props.inited()
           status.inited = true
         }

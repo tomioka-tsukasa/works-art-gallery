@@ -61,7 +61,7 @@ export default function ArtModel({
   }, [artModel, isView, setView, scrollObserve, dispatch, clickHandler, router])
   return <>
     <div 
-      className={`${styles.root}`} 
+      className={`${styles.root} ${isView ? styles.isView : ''}`} 
       onClick={clickHandler}
     >
       <div className={`${styles.image} ${isView ? styles.isView : ''}`}>
