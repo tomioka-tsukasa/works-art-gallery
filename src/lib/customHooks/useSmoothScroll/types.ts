@@ -1,7 +1,9 @@
 export type UseSmoothScroll = ({
-  inited
-}?: {
-  inited?: () => any
+  inited,
+  autoScroll
+}: {
+  inited?: () => any,
+  autoScroll?: boolean
 }) => {
   status: Status,
   bootup: () => void,

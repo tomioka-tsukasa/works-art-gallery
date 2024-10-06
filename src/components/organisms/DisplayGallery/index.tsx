@@ -13,6 +13,7 @@ export default function DisplayGallery() {
   const isBootup = useRef<boolean>(false)
   useEffect(() => {
     const smoothScroll = useSmoothScroll({
+      autoScroll: false,
       inited: () => {
         setCompleted(true)
       }
