@@ -1,11 +1,24 @@
 @use "sass:map";
 @use "@setting" as *;
 
+.root {
+  transition: all 1.2s ease-in 0s;
+  opacity: 0.2;
+  pointer-events: none;
+
+  &.isActive {
+    opacity: 1;
+    pointer-events: visible;
+  }
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
 
   > * {
+    width: 104px;
+
     &:first-child {
       transform: scaleX(-1);
     }

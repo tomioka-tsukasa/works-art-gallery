@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: calc((80 / 104) * 100%);
-  margin: calc((3 / 104) * 100%) calc((-32 / 104) * 100%) 0 0;
+  width: calc((32 / 104) * 100%);
+  margin: calc((3 / 104) * 100%) calc((-20 / 104) * 100%) 0 0;
 
   span {
     display: inline-block;
@@ -27,7 +27,7 @@
     background-color: #d9d9d9;
 
     &:nth-child(1) {
-      width: calc((21 / 104) * 100%);
+      width: calc((54 / 104) * 100%);
       transform: translate(calc((2 / 104) * 100%), 100%) rotate(38.76deg);
       transform-origin: right;
     }
@@ -39,9 +39,8 @@
 }
 
 .circle {
-  width: calc((56 / 104) * 100%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: calc((36 / 104) * 100%);
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   aspect-ratio: 1 / 1;
 }

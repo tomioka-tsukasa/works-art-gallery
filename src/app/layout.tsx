@@ -2,6 +2,8 @@ import "@/sass/globals.scss";
 import styles from "./_index.module.scss"
 import type { Metadata } from "next";
 import Header from "../components/organisms/Header";
+import Loading from "../components/organisms/Loading";
+import StoreProvider from "@/lib/store/provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,10 +17,17 @@ export default function LabLayout({
 }>) {
   return <>
     <html lang="ja" className={`${styles.html}`}>
-      <body className={`${styles.body}`}>
-        <Header />
-        {children}
-      </body>
+      <StoreProvider>
+        <body className={`${styles.body}`}>
+          <div className={`${styles.header}`}>
+            <Header />
+          </div>
+          <div className={`${styles.loading}`}>
+            <Loading active={true} />
+          </div>
+          {children}
+        </body>
+      </StoreProvider>
     </html>
   </>
 }

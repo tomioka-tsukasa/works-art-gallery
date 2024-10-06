@@ -3,25 +3,11 @@
 
 .root {
   display: flex;
-  position: fixed;
-  z-index: 999;
-  top: 0;
-  left: 0;
   flex-direction: column;
   justify-content: flex-end;
   height: 64px;
   padding: 0 0 0 12px;
   background-color: #ffffff;
-
-  @include pc {
-    left: 50%;
-    width: calc(100vh * (390 / 844));
-    transform: translate(-50%, 0);
-  }
-
-  @include sp {
-    width: 100%;
-  }
 }
 
 .content {
