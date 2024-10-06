@@ -16,6 +16,7 @@ export default function Loading({
   active = true
 }: Props ) {
   const isComplete = useAppSelector(selector => selector.loadingCtrl.complete)
+  const isVisited = useAppSelector(selector => selector.loadingCtrl.visied)
   const pathname = usePathname()
   const dispatch = useAppDispatch()
   useVisited()
@@ -23,13 +24,18 @@ export default function Loading({
     isComplete && dispatch(update({
       complete: false
     }))
-  }, [pathname])
-  useEffect(() => {
     setTimeout(() => {
       dispatch(update({
         complete: true
       }))
-    }, 1200);
+    }, 900);
+  }, [pathname])
+  useEffect(() => {
+    !isVisited && setTimeout(() => {
+      dispatch(update({
+        complete: true
+      }))
+    }, 900);
   }, [isComplete, active, dispatch])
   if (!active) return <></>
   else return <>
