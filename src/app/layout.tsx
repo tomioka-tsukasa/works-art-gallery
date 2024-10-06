@@ -23,7 +23,7 @@ export default function LabLayout({
             <Header />
           </div>
           <div className={`${styles.loading}`}>
-            <Loading />
+            <Loading active={true} />
           </div>
           {children}
         </body>

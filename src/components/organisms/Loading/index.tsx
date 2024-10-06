@@ -7,7 +7,13 @@ import { useVisited } from "./customHooks/useVisited"
 import { useEffect } from "react"
 import { update } from "@/lib/store/slice/loadingCtrl"
 
-export default function Loading() {
+type Props = {
+  active?: boolean
+}
+
+export default function Loading({
+  active = true
+}: Props ) {
   const isComplete = useAppSelector(selector => selector.loadingCtrl.complete)
   const dispatch = useAppDispatch()
   useVisited()
@@ -17,8 +23,9 @@ export default function Loading() {
         complete: true
       }))
     }, 1200);
-  }, [isComplete])
-  return <>
+  }, [isComplete, active, dispatch])
+  if (!active) return <></>
+  else return <>
     <div className={`${styles.root} ${isComplete ? styles.isComplete : ''}`}>
       <div className={`${styles.content}`}>
         <div className={`${styles.title} ${zenOldMincho_w400.className}`}>
