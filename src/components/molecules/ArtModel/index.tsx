@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from "react"
+import { Dispatch, useCallback, useEffect, useState } from "react"
 import NamePlate from "../../atoms/NamePlate"
 import styles from "./_index.module.scss"
 import Image from "next/image"
@@ -45,20 +45,18 @@ export default function ArtModel({
   const [isView, setView] = useState<boolean>(true)
   const dispatch = useAppDispatch()
   const router = useRouter()
-  const clickHandler = () => {
-    dispatch(update({
-      complete: false
-    }))
+  const clickHandler = useCallback(() => {
+    dispatch(update({ complete: false }))
     setTimeout(() => {
       router.push(`/art/${artModel.slug}`)
     }, 900);
-  }
+  }, [dispatch, artModel.slug, router])
   useEffect(() => {
     scrollTrigger(
       artModel,
       setView
     )
-  }, [artModel, isView, setView, scrollObserve, dispatch, clickHandler, router])
+  }, [artModel, isView, scrollObserve])
   return <>
     <div 
       className={`${styles.root} ${isView ? styles.isView : ''}`} 

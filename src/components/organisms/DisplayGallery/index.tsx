@@ -11,13 +11,13 @@ export default function DisplayGallery() {
   const isLoaded = useAppSelector(selector => selector.loadingCtrl.complete)
   const [isCompleted, setCompleted] = useState<boolean>(false)
   const isBootup = useRef<boolean>(false)
+  const smoothScroll = useSmoothScroll({
+    autoScroll: true,
+    inited: () => {
+      setCompleted(true)
+    }
+  })
   useEffect(() => {
-    const smoothScroll = useSmoothScroll({
-      autoScroll: true,
-      inited: () => {
-        setCompleted(true)
-      }
-    })
     if (
       isLoaded
       && smoothScroll
@@ -31,7 +31,7 @@ export default function DisplayGallery() {
         smoothScroll.init()
       }
     }
-  }, [isLoaded, isCompleted])
+  }, [isLoaded, isCompleted, smoothScroll])
   return <>
     <div className={`${styles.root}`}>
       <div className={`${styles.gallery}`}>

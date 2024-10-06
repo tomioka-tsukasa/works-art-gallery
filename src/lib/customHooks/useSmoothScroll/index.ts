@@ -19,6 +19,7 @@ const useSmoothScroll: UseSmoothScroll = (props = {
   inited: () => {},
   autoScroll: true
 }) => {
+  if (typeof document === 'undefined') return
   const container = document.getElementById('scroll-container') as HTMLElement | null;
   const buttonRight = document.getElementById('scroll-right') as HTMLElement | null;
   const buttonLeft = document.getElementById('scroll-left') as HTMLElement | null;
