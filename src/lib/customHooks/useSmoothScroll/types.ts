@@ -41,20 +41,14 @@ export type ScrollAuto = (
   },
   callback?: () => void,
   easeInTime?: number,
-) => ScrollAutoAnimation
-
-export type ScrollAutoAnimation = (
-  currentTime: number
 ) => void
 
 export type StartAutoScroll = (
   element: HTMLElement,
-  status: {
-    active: boolean
-  }
-) => ScrollAutoAnimation
+  status: Status
+) => void
 
-export type ResetAutoScroll = (
+export type ResetAutoScrollEvent = (
   element: HTMLElement,
   status: {
     active: boolean

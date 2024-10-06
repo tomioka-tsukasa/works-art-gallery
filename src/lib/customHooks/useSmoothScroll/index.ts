@@ -1,6 +1,6 @@
 import { easeInOutQuart, easeOutQuart } from "./easing";
-import { resetAutoScroll, smoothScroll, smoothScrollAuto, startAutoScroll, touchCtrl } from "./statics"
-import { ScrollAutoAnimation, ScrollDirection, Status, UseSmoothScroll } from "./types";
+import { resetAutoScrollEvent, smoothScroll, smoothScrollAuto, startAutoScroll, touchCtrl } from "./statics"
+import { ScrollDirection, Status, UseSmoothScroll } from "./types";
 
 const status: Status = {
   inited: false,
@@ -23,43 +23,49 @@ const useSmoothScroll: UseSmoothScroll = (props = {
   const container = document.getElementById('scroll-container') as HTMLElement | null;
   const buttonRight = document.getElementById('scroll-right') as HTMLElement | null;
   const buttonLeft = document.getElementById('scroll-left') as HTMLElement | null;
-  let smoothScrollAutoRestart: ScrollAutoAnimation
   if (
     !container
     || !buttonRight
     || !buttonLeft
   ) return 
+  resetAutoScrollEvent(
+    container,
+    status.auto
+  )
   const onTouchStart = (
     direction: ScrollDirection
   ) => {
     if (!status.onTouch.active) {
-      status.onTouch.active = true
       status.auto.active = false
       status.onEaseOut.active = false
-      resetAutoScroll(
-        container,
-        status.auto
-      )
+      status.onTouch.active = true
       smoothScrollAuto(
         container,
         direction === 'next' ? 7.5 : -7.5,
-        status.onTouch,
-        () => smoothScroll(
-          container,
-          direction === 'next' ? 75 : -75,
-          1000,
-          easeOutQuart,
-          status.onEaseOut,
-        )
+        status.onTouch
       )
     }
   }
-  const onTouchEnd = () => {
+  const onTouchEnd = (
+    direction: ScrollDirection
+  ) => {
     if (status.onTouch.active) {
+      status.auto.active = false
       status.onTouch.active = false
       status.onEaseOut.active = true
-      status.auto.active = true
-      smoothScrollAutoRestart(0)
+      smoothScroll(
+        container,
+        direction === 'next' ? 75 : -75,
+        1000,
+        easeOutQuart,
+        status.onEaseOut,
+        () => {
+          startAutoScroll(
+            container,
+            status
+          )
+        }
+      )
     }
   }
   return {
@@ -78,9 +84,9 @@ const useSmoothScroll: UseSmoothScroll = (props = {
         onTouchEnd
       )
       status.inited && props.autoScroll && (
-        smoothScrollAutoRestart = startAutoScroll(
+        startAutoScroll(
           container,
-          status.auto
+          status
         )
       )
     },
