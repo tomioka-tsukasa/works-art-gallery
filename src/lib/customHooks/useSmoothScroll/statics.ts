@@ -1,5 +1,5 @@
 import { easeIn } from "./easing"
-import { CtrlTarget, Scroll, ScrollAuto, StartAutoScroll, TouchCtrl } from "./types"
+import { CtrlTarget, Scroll, ScrollAuto, ScrollAutoAnimation, StartAutoScroll, TouchCtrl } from "./types"
 
 const ctrlTarget: CtrlTarget = (
   element,
@@ -49,7 +49,7 @@ const smoothScrollAuto: ScrollAuto = (
 ) => {
   let startTime: number | null = null
   let requestID: number = 0
-  const animation = (currentTime: number) => {
+  const animation: ScrollAutoAnimation = (currentTime) => {
     if (startTime === null) startTime = currentTime
     const timeElapsed = currentTime - startTime
     element.scrollLeft += Math.min(1, easeIn(timeElapsed, easeInTime)) * speed
@@ -61,6 +61,7 @@ const smoothScrollAuto: ScrollAuto = (
     }
   }
   requestID = requestAnimationFrame(animation)
+  return animation
 }
 
 const touchCtrl: TouchCtrl = (
@@ -91,7 +92,7 @@ const startAutoScroll: StartAutoScroll = (
   container,
   status
 ) => {
-  smoothScrollAuto(
+  return smoothScrollAuto(
     container,
     1,
     status

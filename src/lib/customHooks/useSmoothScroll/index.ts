@@ -1,6 +1,6 @@
 import { easeInOutQuart, easeOutQuart } from "./easing";
 import { smoothScroll, smoothScrollAuto, startAutoScroll, touchCtrl } from "./statics"
-import { ScrollDirection, Status, UseSmoothScroll } from "./types";
+import { ScrollAutoAnimation, ScrollDirection, Status, UseSmoothScroll } from "./types";
 
 const status: Status = {
   inited: false,
@@ -23,6 +23,7 @@ const useSmoothScroll: UseSmoothScroll = (props = {
   const container = document.getElementById('scroll-container') as HTMLElement | null;
   const buttonRight = document.getElementById('scroll-right') as HTMLElement | null;
   const buttonLeft = document.getElementById('scroll-left') as HTMLElement | null;
+  let smoothScrollAutoRestart: ScrollAutoAnimation
   if (
     !container
     || !buttonRight
@@ -54,10 +55,7 @@ const useSmoothScroll: UseSmoothScroll = (props = {
       status.onTouch.active = false
       status.onEaseOut.active = true
       status.auto.active = true
-      props.autoScroll && startAutoScroll(
-        container,
-        status.auto
-      )
+      smoothScrollAutoRestart(0)
     }
   }
   return {
@@ -75,9 +73,11 @@ const useSmoothScroll: UseSmoothScroll = (props = {
         onTouchStart,
         onTouchEnd
       )
-      status.inited && props.autoScroll && startAutoScroll(
-        container,
-        status.auto
+      status.inited && props.autoScroll && (
+        smoothScrollAutoRestart = startAutoScroll(
+          container,
+          status.auto
+        )
       )
     },
     init() {
