@@ -1,4 +1,4 @@
-import { Dispatch, useCallback, useEffect, useState } from "react"
+import { Dispatch, useCallback, useState } from "react"
 import NamePlate from "../../atoms/NamePlate"
 import styles from "./_index.module.scss"
 import Image from "next/image"
@@ -6,41 +6,16 @@ import ViewMore from "../ViewMore"
 import { useAppDispatch } from "@/lib/store/hook"
 import { update } from "@/lib/store/slice/loadingCtrl"
 import { useRouter } from "next/navigation"
+import { useScrollObserve } from "./customHooks/useScrollObserve"
 
 type Props = {
   artModel: Cms.ArtModel,
   scrollObserve?: boolean,
 }
 
-const bodyMarginLeft = () => {
-  return (innerWidth - document.body.clientWidth) / 2
-}
-
-const observe: (
-  e: HTMLElement
-) => boolean = (
-  e
-) => {
-  const rect = e?.getBoundingClientRect()
-  if (!rect || !e) return false
-  return rect.x - bodyMarginLeft() < document.body.clientWidth / 1.8
-}
-
-const scrollTrigger = (
-  artModel: Cms.ArtModel,
-  setView: Dispatch<boolean>
-) => {
-  function animation() {
-    const e = document.querySelector(`#${artModel.slug}`) as HTMLElement
-    setView(observe(e))
-    requestAnimationFrame(animation) 
-  }
-  requestAnimationFrame(animation)
-}
-
 export default function ArtModel({
   artModel,
-  scrollObserve = false,
+  scrollObserve = true,
 }: Props ) {
   const [isView, setView] = useState<boolean>(true)
   const dispatch = useAppDispatch()
@@ -51,12 +26,11 @@ export default function ArtModel({
       router.push(`/art/${artModel.slug}`)
     }, 900);
   }, [dispatch, artModel.slug, router])
-  useEffect(() => {
-    scrollTrigger(
-      artModel,
-      setView
-    )
-  }, [artModel, isView, scrollObserve])
+  useScrollObserve(
+    artModel,
+    setView,
+    scrollObserve
+  )
   return <>
     <div 
       className={`${styles.root} ${isView ? styles.isView : ''}`} 
