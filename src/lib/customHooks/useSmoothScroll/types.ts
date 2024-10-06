@@ -54,6 +54,13 @@ export type StartAutoScroll = (
   }
 ) => ScrollAutoAnimation
 
+export type ResetAutoScroll = (
+  element: HTMLElement,
+  status: {
+    active: boolean
+  }
+) => void
+
 export type CtrlTarget = (
   element: HTMLElement,
   target: number

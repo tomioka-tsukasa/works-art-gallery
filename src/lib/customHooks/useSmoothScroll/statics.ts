@@ -1,5 +1,5 @@
 import { easeIn } from "./easing"
-import { CtrlTarget, Scroll, ScrollAuto, ScrollAutoAnimation, StartAutoScroll, TouchCtrl } from "./types"
+import { CtrlTarget, ResetAutoScroll, Scroll, ScrollAuto, ScrollAutoAnimation, StartAutoScroll, TouchCtrl } from "./types"
 
 const ctrlTarget: CtrlTarget = (
   element,
@@ -99,4 +99,16 @@ const startAutoScroll: StartAutoScroll = (
   )
 }
 
-export { ctrlTarget, smoothScroll, smoothScrollAuto, touchCtrl, startAutoScroll }
+const resetAutoScroll: ResetAutoScroll = (
+  container,
+  status
+) => {
+  container.addEventListener('touchstart', () => {
+    status.active = false
+  }) 
+  container.addEventListener('mousedown', () => {
+    status.active = false
+  }) 
+}
+
+export { ctrlTarget, smoothScroll, smoothScrollAuto, touchCtrl, startAutoScroll, resetAutoScroll }
