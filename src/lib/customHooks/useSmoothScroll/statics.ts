@@ -93,7 +93,7 @@ const startAutoScroll: StartAutoScroll = (
 ) => {
   smoothScrollAuto(
     container,
-    0.5,
+    1,
     status
   )
 }
