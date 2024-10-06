@@ -1,7 +1,7 @@
 import styles from "./_index.module.scss"
-import DisplayGallery from "./components/organisms/DisplayGallery"
-import GalleryNav from "./components/organisms/GalleryNav"
-import Opening from "./components/templates/Opening"
+import DisplayGallery from "../components/organisms/DisplayGallery"
+import GalleryNav from "../components/organisms/GalleryNav"
+import Opening from "../components/templates/Opening"
 
 export default function LabArtGallery() {
   return <>
