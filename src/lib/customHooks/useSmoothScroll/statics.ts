@@ -49,16 +49,18 @@ const smoothScrollAuto: ScrollAuto = (
 ) => {
   let startTime: number | null = null
   let requestID: number = 0
+  let frameCount: number = 0
   const animation = (currentTime: number) => {
     if (startTime === null) startTime = currentTime
     const timeElapsed = currentTime - startTime
-    element.scrollLeft += Math.min(1, easeIn(timeElapsed, easeInTime)) * speed
+    if (frameCount % 2 === 0) element.scrollLeft += Math.min(1, easeIn(timeElapsed, easeInTime)) * speed
     if (status.active) {
       requestID= requestAnimationFrame(animation)
     } else {
       cancelAnimationFrame(requestID)
       callback()
     }
+    frameCount++
   }
   requestID = requestAnimationFrame(animation)
 }
@@ -96,7 +98,7 @@ const startAutoScroll: StartAutoScroll = (
   status.auto.active = true
   return smoothScrollAuto(
     container,
-    1,
+    1.5,
     status.auto
   )
 }
