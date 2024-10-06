@@ -48,7 +48,7 @@ export type StartAutoScroll = (
   status: Status
 ) => void
 
-export type ResetAutoScroll = (
+export type ResetAutoScrollEvent = (
   element: HTMLElement,
   status: {
     active: boolean

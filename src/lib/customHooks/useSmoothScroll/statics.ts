@@ -1,5 +1,5 @@
 import { easeIn } from "./easing"
-import { CtrlTarget, ResetAutoScroll, Scroll, ScrollAuto, StartAutoScroll, TouchCtrl } from "./types"
+import { CtrlTarget, ResetAutoScrollEvent, Scroll, ScrollAuto, StartAutoScroll, TouchCtrl } from "./types"
 
 const ctrlTarget: CtrlTarget = (
   element,
@@ -101,7 +101,7 @@ const startAutoScroll: StartAutoScroll = (
   )
 }
 
-const resetAutoScroll: ResetAutoScroll = (
+const resetAutoScrollEvent: ResetAutoScrollEvent = (
   container,
   status
 ) => {
@@ -113,4 +113,4 @@ const resetAutoScroll: ResetAutoScroll = (
   }) 
 }
 
-export { ctrlTarget, smoothScroll, smoothScrollAuto, touchCtrl, startAutoScroll, resetAutoScroll }
+export { ctrlTarget, smoothScroll, smoothScrollAuto, touchCtrl, startAutoScroll, resetAutoScrollEvent }

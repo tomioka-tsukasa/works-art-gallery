@@ -1,5 +1,5 @@
 import { easeInOutQuart, easeOutQuart } from "./easing";
-import { resetAutoScroll, smoothScroll, smoothScrollAuto, startAutoScroll, touchCtrl } from "./statics"
+import { resetAutoScrollEvent, smoothScroll, smoothScrollAuto, startAutoScroll, touchCtrl } from "./statics"
 import { ScrollDirection, Status, UseSmoothScroll } from "./types";
 
 const status: Status = {
@@ -28,6 +28,10 @@ const useSmoothScroll: UseSmoothScroll = (props = {
     || !buttonRight
     || !buttonLeft
   ) return 
+  resetAutoScrollEvent(
+    container,
+    status.auto
+  )
   const onTouchStart = (
     direction: ScrollDirection
   ) => {
@@ -35,10 +39,6 @@ const useSmoothScroll: UseSmoothScroll = (props = {
       status.onTouch.active = true
       status.auto.active = false
       status.onEaseOut.active = false
-      resetAutoScroll(
-        container,
-        status.auto
-      )
       smoothScrollAuto(
         container,
         direction === 'next' ? 7.5 : -7.5,
