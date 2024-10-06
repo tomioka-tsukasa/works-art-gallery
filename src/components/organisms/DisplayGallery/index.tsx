@@ -1,6 +1,6 @@
 'use client'
 
-import { ArtSampleModels } from "../../../data/art-sample-models"
+import { ArtSampleModels } from "@/app/data/art-sample-models"
 import ArtModel from "../../molecules/ArtModel"
 import styles from "./_index.module.scss"
 import { useSmoothScroll } from "@/lib/customHooks/useSmoothScroll"
