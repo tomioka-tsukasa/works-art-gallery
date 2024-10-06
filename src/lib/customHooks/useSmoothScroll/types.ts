@@ -1,10 +1,11 @@
 export type UseSmoothScroll = ({
   inited
-}: {
-  inited: () => any
+}?: {
+  inited?: () => any
 }) => {
   status: Status,
-  bootup: () => void
+  bootup: () => void,
+  init: () => void,
 } | undefined
 
 export type EasingFunction = (

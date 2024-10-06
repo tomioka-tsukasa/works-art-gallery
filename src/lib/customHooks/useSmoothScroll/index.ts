@@ -3,6 +3,7 @@ import { smoothScroll, smoothScrollAuto, startAutoScroll, touchCtrl } from "./st
 import { ScrollDirection, Status, UseSmoothScroll } from "./types";
 
 const status: Status = {
+  inited: false,
   auto: {
     active: true, 
   },
@@ -12,7 +13,6 @@ const status: Status = {
   onEaseOut: {
     active: false, 
   },
-  inited: false,
 }
 
 const useSmoothScroll: UseSmoothScroll = (props) => {
@@ -63,7 +63,7 @@ const useSmoothScroll: UseSmoothScroll = (props) => {
         buttonRight,
         'next',
         onTouchStart,
-        onTouchEnd
+        onTouchEnd,
       )
       touchCtrl(
         buttonLeft,
@@ -71,6 +71,8 @@ const useSmoothScroll: UseSmoothScroll = (props) => {
         onTouchStart,
         onTouchEnd
       )
+    },
+    init() {
       container.scrollLeft = container.scrollWidth - container.clientWidth
       smoothScroll(
         container,
@@ -85,7 +87,7 @@ const useSmoothScroll: UseSmoothScroll = (props) => {
             container,
             status.auto
           )
-          props.inited && props.inited()
+          props?.inited && props.inited()
           status.inited = true
         }
       )
