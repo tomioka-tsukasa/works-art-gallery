@@ -1,3 +1,12 @@
+export type UseSmoothScroll = ({
+  inited
+}: {
+  inited: () => any
+}) => {
+  status: Status,
+  bootup: () => void
+} | undefined
+
 export type EasingFunction = (
   t: number, // 経過時間（現在の進行状況）
   d: number, // 合計時間（スクロールにかける時間）
@@ -33,9 +42,9 @@ export type ScrollAuto = (
 
 export type StartAutoScroll = (
   element: HTMLElement,
-  status: Record<string, {
+  status: {
     active: boolean
-  }>
+  }
 ) => void
 
 export type CtrlTarget = (
@@ -59,3 +68,16 @@ export type ScrollCtrl = (
     next: HTMLElement
   }
 ) => void
+
+export type Status = {
+  inited: boolean,
+  auto: {
+    active: boolean,
+  },
+  onTouch: {
+    active: boolean,
+  },
+  onEaseOut: {
+    active: boolean,
+  },
+}

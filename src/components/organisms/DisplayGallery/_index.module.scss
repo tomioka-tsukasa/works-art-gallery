@@ -1,44 +1,24 @@
 @use "sass:map";
 @use "@setting" as *;
 
-.root {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+.gallery {
+  pointer-events: none;
+
+  &.isActive {
+    pointer-events: visible;
+  }
 }
 
-.root::-webkit-scrollbar {
-  display: none;
-}
+.nav {
+  position: fixed;
+  z-index: 9;
+  bottom: 0;
+  left: 0;
+  padding: 0 16px 24px;
 
-.content {
-  display: flex;
-  width: max-content;
-  height: calc(86vh - 64px);
-  padding: 0 32px;
-}
+  @include spWidth();
 
-.artModel {
-  width: calc((264 / 390) * (100vh * (390 / 844)));
-
-  &:nth-child(6n + 1) {
-    transform: translate(0, 28px);
-  }
-
-  &:nth-child(6n + 2) {
-    transform: translate(calc((-78 / 390) * 100%), calc((290 / 589) * 100%));
-  }
-
-  &:nth-child(6n + 3) {
-    transform: translate(0, calc((66 / 589) * 100%));
-  }
-
-  &:nth-child(6n + 4) {
-    transform: translate(calc((-41 / 390) * 100%), calc((346 / 589) * 100%));
-  }
-
-  &:nth-child(6n) {
-    transform: translate(calc((-62 / 390) * 100%), calc((263 / 589) * 100%));
+  @include sp {
+    width: 100%;
   }
 }
