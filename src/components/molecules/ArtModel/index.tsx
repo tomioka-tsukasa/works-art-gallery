@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/lib/store/hook"
 import { update } from "@/lib/store/slice/loadingCtrl"
 import { useRouter } from "next/navigation"
 import { useScrollObserve } from "./customHooks/useScrollObserve"
+import { LOADING_TIME } from "@/lib/store/consts"
 
 type Props = {
   artModel: Cms.ArtModel,
@@ -24,7 +25,7 @@ export default function ArtModel({
     dispatch(update({ complete: false }))
     setTimeout(() => {
       router.push(`/art/${artModel.slug}`)
-    }, 900);
+    }, LOADING_TIME);
   }, [dispatch, artModel.slug, router])
   useScrollObserve(
     artModel,

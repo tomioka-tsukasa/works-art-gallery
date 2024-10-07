@@ -1,3 +1,4 @@
+import { LOADING_TIME } from "@/lib/store/consts";
 import { useAppDispatch } from "@/lib/store/hook";
 import { update } from "@/lib/store/slice/loadingCtrl";
 import { usePathname } from "next/navigation";
@@ -14,6 +15,6 @@ export function useUpdate() {
       dispatch(update({
         complete: true
       }))
-    }, 900)
+    }, LOADING_TIME)
   }, [pathname, dispatch])
 }
