@@ -11,19 +11,6 @@ namespace Cms {
     altText: string,
   }
 
-  export interface Newt_Thumbnail {
-    _id?: string;
-    src: string;
-    fileName?: string;
-    fileType?: string;
-    fileSize?: number;
-    width?: number;
-    height?: number;
-    title?: string;
-    altText: string;
-    description?: string;
-  }
-
   export interface StaticImageData {
     src: string;
     height: number;
