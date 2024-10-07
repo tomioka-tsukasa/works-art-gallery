@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import styles from "./_index.module.scss"
 import { useAppDispatch } from "@/lib/store/hook"
 import { update } from "@/lib/store/slice/loadingCtrl"
+import { LOADING_TIME } from "@/lib/store/consts"
 
 export default function BackHome() {
   const dispatch = useAppDispatch()
@@ -14,7 +15,7 @@ export default function BackHome() {
     }))
     setTimeout(() => {
       router.push('/')
-    }, 900);
+    }, LOADING_TIME);
   }
   return <>
     <div className={styles.root}>
