@@ -1,7 +1,7 @@
 'use client'
 
 import styles from "./_index.module.scss"
-import { ArtSampleModels } from "@/app/data/art-sample-models"
+import { ArtSampleModels } from "@/data/art-samples"
 import ArtModel from "../../molecules/ArtModel"
 
 type Props = {

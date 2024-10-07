@@ -1,6 +1,6 @@
 import BackHome from "@/components/atoms/BackHome"
 import styles from "./_index.module.scss"
-import { ArtSampleModels } from "@/app/data/art-sample-models"
+import { ArtSampleModels } from "@/data/art-samples"
 import NamePlate from "@/components/atoms/NamePlate"
 import Image from "next/image"
 import DummyBody from "../components/atoms/DummyBody"
