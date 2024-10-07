@@ -2,35 +2,68 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+### command
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ yarn install
+# パッケージインストール
+$ yarn dev
+# 開発環境立ち上げ
+$ yarn build
+# SGビルド
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### version
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* `node`: `20.14.0`
+* `yarn`: `1.22.22`
+* `Next.js`: `14.2.5`（App Router）
+* `react`: `^18`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contents Management
 
-## Learn More
+📦 🛠
 
-To learn more about Next.js, take a look at the following resources:
+アート作品のコンテンツは [art-samples.ts](./src/data/art-samples.ts) で管理しています。[public/assets/](./public/assets/)ディレクトリ内に画像をアップロードして、[art-samples.ts](./src/data/art-samples.ts)に情報を流し込んでください。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🚚 💨
 
-## Deploy on Vercel
+Vercelで自動デプロイされるように環境構築しています。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+下記のアカウントで [works-art-galleryのプロジェクト](https://vercel.com/tomioka-tsukasas-projects/works-art-gallery)にアクセス。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* GitHubアカウント：[tomioka-tsukasa](https://github.com/tomioka-tsukasa/works-art-gallery)
+* [公開URL](https://works-art-gallery-r9y1.vercel.app/)
+
+## Git Rules
+
+🌿 🌿 🌿 
+
+### コミットルール
+
+* fix: バグ修正
+* hotfix: 緊急のバグ修正
+* add: 新規追加
+* adjust: 微細な修正など
+* update: ニュース更新など機能変更ががない更新
+* style: ソースのフォーマット調整
+* refactor: 仕様に影響がないコード改善(リファクタ)
+* change: 仕様変更
+* disable: 無効化（コメントアウト等）
+* remove: 削除
+* revert: 変更取り消し
+* env: 開発環境の追加・調整
+* docs: ドキュメントの作成・調整
+* upgrade: バージョンアップ
+
+### ブランチルール
+
+| ブランチ名 | 役割 | チェックアウト元 |
+| --- |  --- |  --- | 
+| main | 公開ブランチ | - |
+| develop | 開発ブランチ | main |
+| feature/* | 新規開発・調整ブランチ | (main), develop |
+| hotfix-* | 公開中のバグ修正 | main
+| store/* | ソース保存用ブランチ | [any] |
